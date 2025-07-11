@@ -1,8 +1,8 @@
 # Se importa la Clase "Lista_numeros" de "lista_numeros.py"
-from lista_numeros import Lista_numeros
+from base_datos import Base_Datos
 
 # Creación de una instancia de la clase importada
-lista=Lista_numeros()
+lista=Base_Datos()
 
 # Se crea la Clase "Calculadora" junto con sus metodos
 class Calculadora():
@@ -27,9 +27,12 @@ class Calculadora():
     
 # Se obtiene la posición en donde se desea insertar el dato ya determinado  
     def añadirDato(self):
+        Dato1=int(input("\nDato 1:"))
+        Dato2=int(input("Dato 2:"))
+        sublista=([Dato1,Dato2])
         posicion=int(input(f"\nDigite la posición en que desea insertar la sublista: ")) 
-        lista.almacenarDato(posicion)          
-        return posicion
+        lista.almacenarDato(posicion,sublista)          
+        return posicion,sublista
 
 # Se obtiene la posición del dato que se desea eliminar
     def eliminarNumero(self):
@@ -57,3 +60,52 @@ class Calculadora():
                     print("\ningrese una valor dentro del rango e intente nuevamente...")
             except ValueError:
                 print("\ningrese una numero entero valido e intente nuevamente...")
+
+# Codigo principal
+
+# Se crea una instancia de la clase calculadora, que es quien contiene los metodos a ejecutar
+calculadora=Calculadora()
+
+aux=True
+# Se hace la creación del Menu
+while aux:    
+    try:
+        print("\nMENÚ")
+        print("Digite el número de la acción que desea realizar:\n")
+        print("\n1. Agregar un par de números a la lista")
+        print("2. Eliminar un par de datos ya existente dependiendo de su posición")
+        print("3. Insertar un nuevo par de datos")
+        print("4. Remover un par de datos de acuerdo a su valores")
+        print("5. Salir del sistema ")
+        print("Seleccione una opción: ")
+        opc=input(" ")
+        match opc:
+            case "1":
+        #if opc=="1":
+                num1,num2=calculadora.pedirNumero()
+                calculadora.almacenarDatos(num1,num2)
+                
+            case "2":
+                numero=calculadora.eliminarNumero()
+                
+            case "3":
+                dato=calculadora.añadirDato()
+                
+            case "5":
+                print("Saliendo del sistema...")
+                aux = False
+            case _:
+                print("Opción inválida, por favor ingrese un número válido del menú.")
+            
+
+    except ValueError:
+            print("Opción invalida, ingrese un número de acuerdo al menu")
+
+    
+
+    
+
+# Se hace llamado de cada uno de los metodos para que las funciones se ejecuten
+
+#calculadora.agregarLista()
+#mostrar=calculadora.mostrarNumero()
