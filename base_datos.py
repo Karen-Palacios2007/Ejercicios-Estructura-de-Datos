@@ -3,7 +3,9 @@ class Base_Datos:
 
 # Se inicializa con unico atributo tipo Lista en donde se agregaran todos los numeros   
     def __init__(self):
-       self.lista_numeros=[]
+        self.lista_numeros=[]
+        self.tupla_pares = []
+        self.tupla_impares = []    
 
 # Se guardan los datos anteriormente digitados (.append())
     def guardarDatos(self,datoNumero):
@@ -48,7 +50,15 @@ class Base_Datos:
     def ordenDescendente(self):
         self.lista_numeros.reverse()
         print ("\nLa lista ordenada descendentemente es: ", self.lista_numeros)
-        
+
+# Muestra la tupla de números pares
+    def mostarPares(self, numero):
+        self.tupla_pares.append(numero)
+
+# Muestra la tupla de números impares
+    def mostarImares(self, numero):
+        self.tupla_impares.append(numero) 
+                
 # Se muestra el elemento encontrado en el indice que se que se indique
     def verNumero(self,posicion):
         numero=self.lista_numeros.index(posicion)

@@ -9,8 +9,8 @@ class Calculadora():
     
 # Se obtienen los numeros a insertar inicialmente en la lista
     def pedirNumero(self):
-        num1=input("Numero 1: ")
-        num2=input("Numero 2: ")
+        num1=int(input("Numero 1: "))
+        num2=int(input("Numero 2: "))
         return num1,num2
 
 # Se almacenan los datos proporcionados
@@ -27,8 +27,8 @@ class Calculadora():
     
 # Se obtiene la posición en donde se desea insertar el dato ya determinado  
     def añadirDato(self):
-        Dato1=input("\nDato 1:")
-        Dato2=input("Dato 2:")
+        Dato1=int(input("\nDato 1:"))
+        Dato2=int(input("Dato 2:"))
         sublista=([Dato1,Dato2])
         posicion=int(input(f"\nDigite la posición en que desea insertar la sublista: ")) 
         lista.almacenarDato(posicion,sublista)          
@@ -39,7 +39,7 @@ class Calculadora():
         while True:
             try:
                 posicion=int(input("Digite la posición (entre 0-{}) del dato a eliminar: ".format(len(lista.lista_numeros)-1)))
-                if posicion<len(lista.lista_numeros):
+                if posicion<len(lista.lista_numeros): 
                     numeroEliminado=lista.eliminarDato(posicion)     
                     return numeroEliminado
                 else: 
@@ -52,10 +52,11 @@ class Calculadora():
         while True:
             try:
                 print("\nDigite los datos exactos de la sublista a eliminar ")
-                dato1=input("Dato 1:")
-                dato2=input("Dato 2:")
+                dato1=int(input("Dato 1:"))
+                dato2=int(input("Dato 2:"))
                 datos=([dato1,dato2])
                 lista.remover(datos)
+                break
             except ValueError:
                 print("Los números no se han encontrado en una sublista, intente nuevamente:\n")
 
@@ -64,8 +65,8 @@ class Calculadora():
         while True:
             try:
                 print("\nDigite los datos exactos de la sublista que desea conocer la posición ")
-                dato1=input("Dato 1:")
-                dato2=input("Dato 2:")
+                dato1=int(input("Dato 1:"))
+                dato2=int(input("Dato 2:"))
                 datos=([dato1,dato2])
                 lista.mostrarPosicion(datos)
             except ValueError:
@@ -76,14 +77,39 @@ class Calculadora():
         while True:
             try:
                 print("\nDigite los datos exactos de la sublista que desea conocer la posición ")
-                dato1=input("Dato 1:")
-                dato2=input("Dato 2:")
+                dato1=int(input("Dato 1:"))
+                dato2=int(input("Dato 2:"))
                 datos=([dato1,dato2])
                 lista.mostrarContador(datos)
             except ValueError:
                 print("Los números no se han encontrado en una sublista, intente nuevamente:\n")
-       
-    
+
+#Se recibe la lista ordenada ascendentemente              
+    def mostrarAscendencia(self):
+        lista.ordenAscendente()
+        
+#Se recibe la lista ordenada descendentemente                      
+    def mostrarDescendencia(self):
+        lista.ordenDescendente()
+        
+# Crear tupla con números pares
+    def tuplaPares(self):
+        lista.tupla_pares = []
+        for i in lista.lista_numeros:
+            for numero in i:
+                if numero % 2 == 0:
+                    lista.mostarPares(numero)
+        print("Tupla de números pares:", tuple(lista.tupla_pares))
+
+# Crear tupla con números impares
+    def tuplaImares(self):
+        lista.tupla_impares = []        
+        for i in lista.lista_numeros:
+            for numero in i:
+                if numero%2!=0:
+                    lista.mostarImares(numero)
+        print("Tupla denúmeros impares: ", tuple(lista.tupla_impares))                    
+                        
 # Se obtiene la posición del dato que desea conocer
     def mostrarNumero(self):
         while True:
@@ -96,15 +122,7 @@ class Calculadora():
                 else: 
                     print("\ningrese una valor dentro del rango e intente nuevamente...")
             except ValueError:
-                print("\ningrese una numero entero valido e intente nuevamente...")
-
-#Se recibe la lista ordenada ascendentemente              
-    def mostrarAscendencia(self):
-        lista.ordenAscendente()
-        
-#Se recibe la lista ordenada descendentemente                      
-    def mostrarDescendencia(self):
-        lista.ordenDescendente()
+                print("\ningrese una numero entero valido e intente nuevamente...")    
         
         
 #***************************************CODIGO PRINCIPAL**************************************************
